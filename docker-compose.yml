@@ -38,7 +38,10 @@ services:
 
   php:
     container_name: "laravel-php-fpm"
-    image: csighub.tencentyun.com/qidian/dsshop_php:dev
+    image: csighub.tencentyun.com/qidian/dsshop_php:debug
+      environment:
+      - XDEBUG_REMOTE_HOST=9.135.113.20
+      - XDEBUG_REMOTE_PORT=9998
     depends_on:
       - redis
       - mysql

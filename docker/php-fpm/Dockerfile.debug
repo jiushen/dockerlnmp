@@ -1,0 +1,11 @@
+FROM csighub.tencentyun.com/qidian/dsshop_php:orig
+  
+COPY xdebug.so /usr/local/lib/php/extensions/no-debug-non-zts-20190902/xdebug.so
+COPY php.ini /usr/local/etc/php/php.ini
+RUN echo "alias ll='ls -l'" >> /etc/bashrc
+RUN apt-get install -y net-tools procps tcpdump vim lrzsz
+
+CMD service supervisor start \
+    && php-fpm
+
+EXPOSE 9000
